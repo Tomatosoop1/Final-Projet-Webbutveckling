@@ -1,0 +1,120 @@
+/* Resetting default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Setting up some basic styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #151845, #39beff);
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 200px;
+}
+
+.player_active {
+    border-color: #e19b1e;
+    /* färg på aktiva spelaren */
+}
+
+.name {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.current {
+    margin-top: 10px;
+}
+
+.current_label {
+    font-weight: bold;
+}
+
+.current_score {
+    font-size: 1.2em;
+    color: #007bff;
+}
+
+.dice {
+    max-width: 100px;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    display: block;
+    position: relative;
+    padding: 0.7em 2.4em;
+    font-size: 18px;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    color: royalblue;
+    z-index: 1;
+    font-family: inherit;
+    font-weight: 500;
+    margin: 4px;
+}
+
+button span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    border: 4px solid royalblue;
+}
+
+button span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 0.3s;
+}
+
+button:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: royalblue;
+}
+
+button:hover {
+    color: white;
+}
+
+button:active span::before {
+    background: #2751cd;
+}
+

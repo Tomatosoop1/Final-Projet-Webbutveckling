@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="finalProjekt.css">
+</head>
+
+<body>
+    <main>
+        <!-- player one-->
+        <section class="player player_0 player_active">
+            <h2 class="name" id="name_0">Player 1</h2>
+            <p class="score" id="score_0">0</p>
+            <div class="current">
+                <p class="current_label">Current</p>
+                <p class="current_score" id="current_0">0</p>
+            </div>
+        </section>
+        <!-- player one-->
+
+        <!-- second player-->
+        <section class="player player_1">
+            <h2 class="name" id="name-1">Player 2</h2>
+            <p class="score" id="score_1">0</p>
+            <div class="current">
+                <p class="current_label">Current</p>
+                <p class="current_score" id="current_1">0</p>
+            </div>
+        </section>
+        <!-- second player-->
+
+        <!-- buttons,image -->
+        <img src="dice (1).png"
+            alt="Playing dice" class="dice" id="diceImage" />
+        <button class="btn btn_new" onclick="resetGame()">New Game
+            <span></span>
+        </button>
+        <button class="btn btn_roll" onclick="rollDice()">Roll dice
+            <span></span>
+        </button>
+        <button class="btn btn_hold" onclick="holdScore()">Hold
+            <span></span>
+        </button>
+
+    </main>
+    <script src="js/script.js"></script>
+
+    <script>
+        let currentPlayer = 0;
+        let currentRoundScore = 0;
+        let playerScores = [0, 0];
+        let gameOver = false;
+
+        function rollDice() {
+            if (gameOver) return;
+
+            const dice = Math.floor(Math.random() * 6) + 1;
+            updateDiceImage(dice);
+
+            if (dice === 1) {
+                currentRoundScore = 0;
+                document.getElementById(`current_${currentPlayer}`).textContent = currentRoundScore;
+                switchPlayer();
+            } else {
+                currentRoundScore += dice;
+                document.getElementById(`current_${currentPlayer}`).textContent = currentRoundScore;
+            }
+        }
+        function holdScore() {
+            if (gameOver) return;
+
+            playerScores[currentPlayer] += currentRoundScore;
+            document.getElementById(`score_${currentPlayer}`).textContent = playerScores[currentPlayer];
+
+            if (playerScores[currentPlayer] >= 50) {
+                gameOver = true;
+                alert(`Player ${currentPlayer + 1} wins!`);
+            } else {
+                currentRoundScore = 0;
+                document.getElementById(`current_${currentPlayer}`).textContent = currentRoundScore;
+                switchPlayer();
+            }
+        }
+
+        function switchPlayer() {
+            // Remove player_active class from all players
+            document.querySelectorAll('.player').forEach(player => {
+                player.classList.remove('player_active');
+            });
+
+            // Switch active player
+            currentPlayer = currentPlayer === 0 ? 1 : 0;
+
+            // Add player_active class to the active player and update border color
+            const activePlayer = document.querySelector(`.player_${currentPlayer}`);
+            activePlayer.classList.add('player_active');
+        }
+
+
+        function resetGame() {
+            currentPlayer = 0;
+            currentRoundScore = 0;
+            playerScores = [0, 0];
+            gameOver = false;
+
+            document.getElementById('score_0').textContent = 0;
+            document.getElementById('score_1').textContent = 0;
+            document.getElementById('current_0').textContent = 0;
+            document.getElementById('current_1').textContent = 0;
+        }
+
+        function updateDiceImage(diceValue) {
+            const diceImage = document.getElementById('diceImage');
+            diceImage.src = `dice (${diceValue}).png`;
+            diceImage.alt = `Dice ${diceValue}`;
+        }
+    </script>
+</body>
+
+</html>
