@@ -61,7 +61,7 @@ main {
 
 .dice {
     max-width: 100px;
-    margin-top: 20px;
+    margin-top: -10px;
 }
 
 button {
