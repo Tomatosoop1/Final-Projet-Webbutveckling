@@ -30,8 +30,8 @@ main {
 }
 
 .player_active {
-    border-color: #11ff00;
-    border-width: 1vh;
+    border-color: #df3f3f;
+    border-width: 0.8vh;
     /* färg på aktiva spelaren */
 }
 
