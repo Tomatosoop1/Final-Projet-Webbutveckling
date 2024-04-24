@@ -11,7 +11,7 @@
 
 <body>
     <main>
-        <!-- player one-->
+        <!--Spelare ett-->
         <section class="player player_0 player_active">
             <h2 class="name" id="name_0">Player 1</h2>
             <p class="score" id="score_0">0</p>
@@ -20,9 +20,9 @@
                 <p class="current_score" id="current_0">0</p>
             </div>
         </section>
-        <!-- player one-->
+   
 
-        <!-- second player-->
+        <!--Spelare två-->
         <section class="player player_1">
             <h2 class="name" id="name-1">Player 2</h2>
             <p class="score" id="score_1">0</p>
@@ -31,9 +31,9 @@
                 <p class="current_score" id="current_1">0</p>
             </div>
         </section>
-        <!-- second player-->
+       
 
-        <!-- buttons,image -->
+        <!-- Knappar och Tärningsbild -->
         <img src="dice (1).png"
             alt="Playing dice" class="dice" id="diceImage" />
         <button class="btn btn_new" onclick="resetGame()">New Game
@@ -47,14 +47,18 @@
         </button>
 
     </main>
+
     <script src="js/script.js"></script>
 
     <script>
+        // JavaScript-kod för spelets funktionalitet
+        // Variabler för spelstatus och poäng
         let currentPlayer = 0;
         let currentRoundScore = 0;
         let playerScores = [0, 0];
         let gameOver = false;
 
+        // Funktion för att kasta tärningen
         function rollDice() {
             if (gameOver) return;
 
@@ -70,6 +74,7 @@
                 document.getElementById(`current_${currentPlayer}`).textContent = currentRoundScore;
             }
         }
+        // Funktion för att hålla poängen
         function holdScore() {
             if (gameOver) return;
 
@@ -85,7 +90,7 @@
                 switchPlayer();
             }
         }
-
+        // Funktion för att byta spelare
         function switchPlayer() {
             // Remove player_active class from all players
             document.querySelectorAll('.player').forEach(player => {
@@ -100,7 +105,7 @@
             activePlayer.classList.add('player_active');
         }
 
-
+        // Funktion för att återställa spelet
         function resetGame() {
             currentPlayer = 0;
             currentRoundScore = 0;
@@ -112,7 +117,7 @@
             document.getElementById('current_0').textContent = 0;
             document.getElementById('current_1').textContent = 0;
         }
-
+        // Funktion för att uppdatera tärningsbilden
         function updateDiceImage(diceValue) {
             const diceImage = document.getElementById('diceImage');
             diceImage.src = `dice (${diceValue}).png`;
