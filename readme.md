@@ -10,3 +10,5 @@ Spelets mål: Nå 50 poäng före motståndaren
 6. Om spelaren slår en 1:a så försvinner alla osparade poäng och det blir motståndarens tur
 7. Spelet fortsätter tills en av spelarna når 50 poäng, då vinner den spelaren
 
+//Dehär skrev Luis och Max tillsammans
+

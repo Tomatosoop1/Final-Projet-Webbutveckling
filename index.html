@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Här ifrån-->
 <html lang="en">
 
 <head>
@@ -46,19 +46,22 @@
             <span></span>
         </button>
 
-    </main>
+    </main> <!--Till hit har Max skrivit-->
 
     <script src="js/script.js"></script>
 
     <script>
         // JavaScript-kod för spelets funktionalitet
         // Variabler för spelstatus och poäng
+         //Dessa variabler skrev Luis
+
         let currentPlayer = 0;
         let currentRoundScore = 0;
         let playerScores = [0, 0];
         let gameOver = false;
 
         // Funktion för att kasta tärningen
+        //Denna funktion skrev Luis
         function rollDice() {
             if (gameOver) return;
 
@@ -75,6 +78,7 @@
             }
         }
         // Funktion för att hålla poängen
+        //Denna funktion skrev Luis
         function holdScore() {
             if (gameOver) return;
 
@@ -91,6 +95,7 @@
             }
         }
         // Funktion för att byta spelare
+        //Denn funktion skrev max
         function switchPlayer() {
             // Remove player_active class from all players
             document.querySelectorAll('.player').forEach(player => {
@@ -106,6 +111,7 @@
         }
 
         // Funktion för att återställa spelet
+        //Denn funktion skrev max
         function resetGame() {
             currentPlayer = 0;
             currentRoundScore = 0;
@@ -118,6 +124,7 @@
             document.getElementById('current_1').textContent = 0;
         }
         // Funktion för att uppdatera tärningsbilden
+        //Denna funktion skrev Luis
         function updateDiceImage(diceValue) {
             const diceImage = document.getElementById('diceImage');
             diceImage.src = `dice (${diceValue}).png`;
